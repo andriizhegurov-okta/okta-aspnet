@@ -3,6 +3,10 @@ mono: 6.6.0 # Use specific mono version due to a cake failure: https://github.co
 sudo: required
 dist: xenial
 dotnet: 5.0
+before_install:
+  # explicitly install other targeted SDKs side by side
+  # from here https://stackoverflow.com/questions/60382711/how-do-you-use-multiple-dotnet-core-unit-test-target-frameworks-in-travis-ci
+  - sudo apt-get install dotnet-sdk-3.1
 script:
   - ./build.sh
 
